@@ -55,9 +55,7 @@ client.on("message", async message => {
 			let hour = Math.floor((((cd % 31536000) % 2628000) % 86400) / 3600);
 			let min = Math.floor(((((cd % 31536000) % 2628000) % 86400) % 3600) / 60);
 			let sec = Math.floor((((((cd % 31536000) % 2628000) % 86400) % 3600) % 60) % 60);
-			countdownEmbed.addField(`${y} years`, `${hour} hours`, true)
-			countdownEmbed.addField(`${m} months`, `${min} minutes`, true)
-			countdownEmbed.addField(`${day} days`, `${sec} seconds`, true)
+			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed);
 			//message.reply(`Years: ${y} | Months: ${m} | Days: ${day} | Hours: ${hour} | Minutes: ${min} | Seconds: ${sec}`);
         } else {
