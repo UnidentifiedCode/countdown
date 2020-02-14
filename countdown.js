@@ -1,5 +1,5 @@
 const { Client, RichEmbed } = require("discord.js");
-const { prefix, token, ownerid } = require("./data/config.json");
+const { prefix, token } = require("./data/config.json");
 const mongoose = require("mongoose");
 const client = new Client({disableEveryone: true});
 
