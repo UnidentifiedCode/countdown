@@ -94,8 +94,8 @@ client.on("message", async message => {
 	.setAuthor(client.user.username + " commands", client.user.avatarURL)
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
-	.addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that./n**Alias:** time, timeleft, tl, cd`)
-        .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations./n**Alias:** info, dev, support`)
+        .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** time, timeleft, tl, cd`)
+        .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** info, dev, support`)
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
     message.channel.send(botInfo);
