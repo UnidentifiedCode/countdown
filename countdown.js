@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGO_URI, {
 	useUnifiedTopology: true
 });
 
-const Counters = require("./models/counter.js");
+const Counters = require("./models/Counter.js");
 
 client.on("ready", () => {
   client.user.setActivity(`over ${client.users.size} users | .time`, { type: "WATCHING" });
