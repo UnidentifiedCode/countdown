@@ -1,5 +1,5 @@
 const { Client, RichEmbed } = require("discord.js");
-const { prefix, token } = require("./data/config.json");
+const { prefix, token, ownerid } = require("./data/config.json");
 const mongoose = require("mongoose");
 const client = new Client({disableEveryone: true});
 
@@ -75,7 +75,7 @@ client.on("message", async message => {
   
   if(command === "botinfo" || command === "info" || command === "dev" || command === "support"){
     const botInfo = new RichEmbed()
-	.setAuthor(client.user.username, client.user.avatarURL)
+	.setAuthor(client.user.username + "info", client.user.avatarURL)
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
 	.addField("👑 Developer", `HaZZe#1337`, true)
@@ -84,10 +84,21 @@ client.on("message", async message => {
 	.addField('👤 Total Users', `${client.users.size}`, true)
 	.addField('📁 Total Channels:', `${client.channels.size}`, true)
 	.addField('🛡 Total Servers', Math.ceil(client.guilds.size), true)
-	.addField('\u200b', `Build with ❤ and discord.js`)
+	.addField('\u200b', `Built with discord.js`)
 	.setTimestamp()
 	.setFooter(`${client.user.username} v0.0.3`, client.user.avatarURL);
-	message.channel.send(botInfo);
+    message.channel.send(botInfo);
+  }
+  if(command === "help") {
+    const botInfo = new RichEmbed()
+	.setAuthor(client.user.username + " commands", client.user.avatarURL)
+	.setColor("#000000")
+	.setThumbnail(client.user.displayAvatarURL)
+	.addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that./n**Alias:** time, timeleft, tl, cd`)
+        .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations./n**Alias:** info, dev, support`)
+	.setTimestamp()
+	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
+    message.channel.send(botInfo);
   }
 });
 
