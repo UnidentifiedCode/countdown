@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const Counters = require("./models/Counter.js");
 
 client.on("ready", () => {
-  client.user.setActivity(`over ${client.users.size} users | .time`, { type: "WATCHING" });
+  client.user.setActivity(`.time of ${client.users.size}`, { type: "WATCHING" });
   client.user.setStatus("dnd");
   console.log("[SYSTEM] The bot is online.");
 });
@@ -79,8 +79,8 @@ client.on("message", async message => {
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
 	.addField("👑 Developer", `HaZZe#1337`, true)
-	.addField("💎 Support Server", `http://hazze.cf/discord`, true)
-	.addField("📤 Invite", `[Invite me](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=379904)`, true)
+	.addField("💎 Support Server", `Soon.../*http://hazze.cf/hut*/`, true)
+	.addField("📤 Invite", `Soon.../*[Invite me](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=379904*/)`, true)
 	.addField('👤 Total Users', `${client.users.size}`, true)
 	.addField('📁 Total Channels:', `${client.channels.size}`, true)
 	.addField('🛡 Total Servers', Math.ceil(client.guilds.size), true)
