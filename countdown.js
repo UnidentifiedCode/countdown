@@ -78,7 +78,7 @@ client.on("message", async message => {
 	.setAuthor(client.user.username + "info", client.user.avatarURL)
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
-	.addField("👑 Developer", `HaZZe#1337`, true)
+	.addField("👑 Developer", `HaZZe#0001`, true)
 	.addField("💎 Support Server", `Soon.../*http://hazze.cf/hut*/`, true)
 	.addField("📤 Invite", `Soon.../*[Invite me](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=379904*/)`, true)
 	.addField('👤 Total Users', `${client.users.size}`, true)
