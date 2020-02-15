@@ -20,10 +20,13 @@ client.on("ready", () => {
 client.on("message", async message => {
   
   if(message.author.bot) return;
+  if(message.content != `${prefix}countdown` || message.content != `${prefix}time`  || message.content != `${prefix}timeleft` || message.content != `${prefix}tl` || message.content != `${prefix}cd` && message.channel.id === "678038687430213652") {
+	message.delete();
+  }
   if(message.content.indexOf(prefix) !== 0) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  
+
   if(command === "countdown" || command === "time" || command === "timeleft" || command === "tl" || command === "cd" ) {
 	let addtime = Math.floor(Math.random() * 2175984000*1000) + 31536000*1000;
 	let countdowntime = Date.now() + addtime;
