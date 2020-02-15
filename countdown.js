@@ -1,5 +1,5 @@
 const { Client, RichEmbed } = require("discord.js");
-const { prefix, token } = require("./data/config.json");
+const { prefix, token, ownerid } = require("./data/config.json");
 const mongoose = require("mongoose");
 const client = new Client({disableEveryone: true});
 
@@ -69,7 +69,6 @@ client.on("message", async message => {
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed);
         } else {
-			
 			let distance = res.time - now;
 			let y = Math.floor(distance / _year);
 			let m = Math.floor((distance % _year) / _month);
@@ -107,9 +106,36 @@ client.on("message", async message => {
 	.setThumbnail(client.user.displayAvatarURL)
         .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** ${prefix}time, ${prefix}timeleft, ${prefix}tl, ${prefix}cd`)
         .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** ${prefix}info`)
+        .addField(`**${prefix}ping**`, `**Description:** Show bot ping.\n**Alias:** None`)
+    	if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
+		botInfo.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+	}
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
     message.channel.send(botInfo);
+  }
+  if(command === "ping") {
+    message.channel.send("Pinging...").then(m => {
+        let ping = m.createdTimestamp - message.createdTimestamp
+        let choices = ["Is this really my ping", "Is it okay? I cant look", "I hope it isnt bad"]
+        let response = choices[Math.floor(Math.random() * choices.length)]
+
+        m.edit(`${response}: Bot Latency: \`${ping}\`, API Latency: \`${Math.round(bot.ping)}\``)
+    })
+  }
+  if(command === "say" || command === "ann") {
+    if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("Insufficient permisions.")
+    let argsresult;
+    let mChannel = message.mentions.channels.first()
+
+    message.delete()
+    if(mChannel) {
+        argsresult = args.slice(1).join(" ")
+        mChannel.send(argsresult)
+    } else {
+        argsresult = args.join(" ")
+        message.channel.send(argsresult)
+    }
   }
 });
 
