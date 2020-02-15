@@ -100,7 +100,7 @@ client.on("message", async message => {
     message.channel.send(botInfo);
   }
   if(command === "help" || command === "cmd" || command === "cmds") {
-    const botInfo = new RichEmbed()
+    const botHelp = new RichEmbed()
 	.setAuthor(client.user.username + " commands", client.user.avatarURL)
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
@@ -110,10 +110,10 @@ client.on("message", async message => {
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
 	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
-		botInfo.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
-		botInfo.addField(`**${prefix}purge**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
+		botHelp.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+		botHelp.addField(`**${prefix}purge**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
 	}
-    message.channel.send(botInfo);
+    message.channel.send(botHelp);
   }
   if(command === "ping") {
     message.channel.send("Pinging...").then(m => {
