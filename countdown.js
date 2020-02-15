@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const Counters = require("./models/Counter.js");
 
 client.on("ready", () => {
-  client.user.setActivity(`.time of ${client.users.size} users`, { type: "WATCHING" });
+  client.user.setActivity(`.timeleft of ${client.users.size} users`, { type: "WATCHING" });
   client.user.setStatus("dnd");
   console.log("[SYSTEM] The bot is online.");
 });
