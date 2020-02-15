@@ -107,11 +107,11 @@ client.on("message", async message => {
         .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** ${prefix}time, ${prefix}timeleft, ${prefix}tl, ${prefix}cd`)
         .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** ${prefix}info`)
         .addField(`**${prefix}ping**`, `**Description:** Show bot ping.\n**Alias:** None`)
-    	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
-		.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
-	}
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
+	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
+		.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+	}
     message.channel.send(botInfo);
   }
   if(command === "ping") {
