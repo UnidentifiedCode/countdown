@@ -111,6 +111,7 @@ client.on("message", async message => {
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
 	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
 		botInfo.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+		botInfo.addField(`**${prefix}purge**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
 	}
     message.channel.send(botInfo);
   }
@@ -136,6 +137,16 @@ client.on("message", async message => {
         argsresult = args.join(" ")
         message.channel.send(argsresult)
     }
+  }
+  if(command === "purge" || command === "clear") {
+    if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("Insufficient permisions.")
+    const deleteCount = parseInt(args[0], 10);
+    if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+      return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+	  
+    const fetched = await message.channel.fetchMessages({limit: deleteCount});
+    message.channel.bulkDelete(fetched)
+      .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
 });
 
