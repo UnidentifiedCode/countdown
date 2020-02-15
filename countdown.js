@@ -14,7 +14,7 @@ const Counters = require("./models/Counter.js");
 client.on("ready", () => {
   client.user.setActivity(`.timeleft of ${client.users.size} users`, { type: "WATCHING" });
   client.user.setStatus("dnd");
-  console.log("[SYSTEM] The bot is online.");
+  console.log("Counting down...");
 });
 
 client.on("message", async message => {
