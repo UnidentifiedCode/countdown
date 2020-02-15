@@ -110,7 +110,7 @@ client.on("message", async message => {
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
 	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
-		.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+		botInfo.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
 	}
     message.channel.send(botInfo);
   }
