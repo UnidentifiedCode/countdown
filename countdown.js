@@ -25,11 +25,18 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   if(command === "countdown" || command === "time" || command === "timeleft" || command === "tl" || command === "cd" ) {
-
-	let countdowntime = Math.floor(Math.random() * 2175984000) + 31536000;;
+	let addtime = Math.floor(Math.random() * 2175984000*1000) + 31536000*1000;
+	let countdowntime = Date.now() + addtime;
+	var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+	var _month = _day * 30;
+	var _year = _month * 12;
+	var now = Date.now();
 	
 	const countdownEmbed = new RichEmbed()
-		.setAuthor(client.user.username, client.user.avatarURL)
+		.setAuthor(message.author.username + " countdown", client.user.avatarURL)
 		.setDescription("Death? There's a app for that!")
 		.setColor("#000000")
 		.setThumbnail(message.author.avatarURL)
@@ -48,30 +55,31 @@ client.on("message", async message => {
 				time: countdowntime
 			})
 			newDoc.save().catch(err => console.log(err));
-			cd = Number(countdowntime);
-			let y = Math.floor(cd / 31536000);
-			let m = Math.floor((cd % 31536000) / 2628000);
-			let day = Math.floor(((cd % 31536000) % 2628000) / 86400);
-			let hour = Math.floor((((cd % 31536000) % 2628000) % 86400) / 3600);
-			let min = Math.floor(((((cd % 31536000) % 2628000) % 86400) % 3600) / 60);
-			let sec = Math.floor((((((cd % 31536000) % 2628000) % 86400) % 3600) % 60) % 60);
+			
+			let distance = countdowntime - now;
+			let y = Math.floor(distance / _year);
+			let m = Math.floor((distance % _year) / _month);
+			let day = Math.floor((distance % _month) / _day);
+			let hour = Math.floor((distance % _day) / _hour);
+			let min = Math.floor((distance % _hour) / _minute);
+			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed);
-			//message.reply(`Years: ${y} | Months: ${m} | Days: ${day} | Hours: ${hour} | Minutes: ${min} | Seconds: ${sec}`);
         } else {
-			cd = Number(res.time);
-			let y = Math.floor(cd / 31536000);
-			let m = Math.floor((cd % 31536000) / 2628000);
-			let day = Math.floor(((cd % 31536000) % 2628000) / 86400);
-			let hour = Math.floor((((cd % 31536000) % 2628000) % 86400) / 3600);
-			let min = Math.floor(((((cd % 31536000) % 2628000) % 86400) % 3600) / 60);
-			let sec = Math.floor((((((cd % 31536000) % 2628000) % 86400) % 3600) % 60) % 60);
+			
+			let distance = res.time - now;
+			let y = Math.floor(distance / _year);
+			let m = Math.floor((distance % _year) / _month);
+			let day = Math.floor((distance % _month) / _day);
+			let hour = Math.floor((distance % _day) / _hour);
+			let min = Math.floor((distance % _hour) / _minute);
+			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed);
-			//message.reply(`Years: ${y} | Months: ${m} | Days: ${day} | Hours: ${hour} | Minutes: ${min} | Seconds: ${sec}`);
         }
       })
   }
+  
   
   if(command === "botinfo" || command === "info" || command === "dev" || command === "support"){
     const botInfo = new RichEmbed()
