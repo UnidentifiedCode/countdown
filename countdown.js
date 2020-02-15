@@ -108,7 +108,7 @@ client.on("message", async message => {
         .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** ${prefix}info`)
         .addField(`**${prefix}ping**`, `**Description:** Show bot ping.\n**Alias:** None`)
     	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
-		botInfo.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+		.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
 	}
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
