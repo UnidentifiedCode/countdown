@@ -97,13 +97,13 @@ client.on("message", async message => {
 	.setFooter(`${client.user.username} v0.0.3`, client.user.avatarURL);
     message.channel.send(botInfo);
   }
-  if(command === "help") {
+  if(command === "help" || command === "cmd" || command === "cmds") {
     const botInfo = new RichEmbed()
 	.setAuthor(client.user.username + " commands", client.user.avatarURL)
 	.setColor("#000000")
 	.setThumbnail(client.user.displayAvatarURL)
-        .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** time, timeleft, tl, cd`)
-        .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** info, dev, support`)
+        .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** ${prefix}time, ${prefix}timeleft, ${prefix}tl, ${prefix}cd`)
+        .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** ${prefix}info, ${prefix}dev, ${prefix}support`)
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
     message.channel.send(botInfo);
