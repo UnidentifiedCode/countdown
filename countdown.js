@@ -111,7 +111,7 @@ client.on("message", async message => {
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
 	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
 		botHelp.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
-		botHelp.addField(`**${prefix}purge**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
+		botHelp.addField(`**${prefix}purge**`, `**Description:** Delete some messages from channels.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
 	}
     message.channel.send(botHelp);
   }
