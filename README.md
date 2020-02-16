@@ -1,2 +1,2 @@
-# CountDownApp for Discord
-Timer to your death
+# Coutdown Discord Bot
+Death? There's a app for that!
