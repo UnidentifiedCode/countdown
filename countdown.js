@@ -69,9 +69,7 @@ client.on("message", async message => {
 			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed);
-                        setInterval(() => {
-                           message.edit(countdownEmbed);
-                        }, 1000)
+                        
         } else {
 			let distance = res.time - now;
 			let y = Math.floor(distance / _year);
@@ -81,10 +79,8 @@ client.on("message", async message => {
 			let min = Math.floor((distance % _hour) / _minute);
 			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
-			message.channel.send(countdownEmbed);
-                        setInterval(() => {
-                           message.edit(countdownEmbed);
-                        }, 1000)
+			message.channel.send(countdownEmbed).then(sentMessage => { sentMessage.edit(cointdownEmbed) });
+    
         }
       })
   }
