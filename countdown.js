@@ -79,11 +79,8 @@ client.on("message", async message => {
 			let min = Math.floor((distance % _hour) / _minute);
 			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
-			message.channel.send(countdownEmbed).then(sentMessage => { 
-                             setInterval(() => {
-                                 sentMessage.edit(countdownEmbed);
-                             }, 1000);
-                        });
+			message.channel.send(countdownEmbed);
+                        
     
         }
       })
@@ -128,7 +125,7 @@ client.on("message", async message => {
         let choices = ["Is this really my ping", "Is it okay? I cant look", "I hope it isnt bad"]
         let response = choices[Math.floor(Math.random() * choices.length)]
 
-        m.edit(`${response}: Bot Latency: \`${ping}\`, API Latency: \`${Math.round(bot.ping)}\``)
+        m.edit(`${response}: Bot Latency: \`${ping}\`, API Latency: \`${Math.round(client.uping)}\``)
     })
   }
   if(command === "say" || command === "ann") {
