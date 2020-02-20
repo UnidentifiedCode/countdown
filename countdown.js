@@ -37,7 +37,7 @@ client.on("message", async message => {
         var _day = _hour * 24;
 	var _month = _day * 30;
 	var _year = _month * 12;
-	var now = Date.now();
+	
 	
 	const countdownEmbed = new RichEmbed()
 		.setAuthor(message.author.username + " countdown", client.user.avatarURL)
@@ -59,7 +59,7 @@ client.on("message", async message => {
 				time: countdowntime
 			})
 			newDoc.save().catch(err => console.log(err));
-			
+			let now = Date.now();
 			let distance = countdowntime - now;
 			let y = Math.floor(distance / _year);
 			let m = Math.floor((distance % _year) / _month);
@@ -71,6 +71,7 @@ client.on("message", async message => {
 			message.channel.send(countdownEmbed);
                         
         } else {
+                        let now = Date.now();
 			let distance = res.time - now;
 			let y = Math.floor(distance / _year);
 			let m = Math.floor((distance % _year) / _month);
@@ -79,7 +80,9 @@ client.on("message", async message => {
 			let min = Math.floor((distance % _hour) / _minute);
 			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
-			message.channel.send(countdownEmbed);
+			message.channel.send(countdownEmbed).then(setInterval() => {
+                            message.edit(countdown Embed)
+                        }, 1000);
                         
     
         }
