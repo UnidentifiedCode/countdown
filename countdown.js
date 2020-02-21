@@ -81,7 +81,7 @@ client.on("message", async message => {
 			let sec = Math.floor((distance % _minute) / _second);
 			countdownEmbed.addField(`\u200b`, `**${y}** Years **${m}** Months **${day}** Days \n**${hour}** Hours **${min}** Minutes **${sec}** Seconds`, true)
 			message.channel.send(countdownEmbed).then(setInterval() => {
-                            message.edit(countdown Embed)
+                            message.edit(countdownEmbed)
                         }, 1000);
                         
     
