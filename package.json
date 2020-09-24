@@ -1,5 +1,5 @@
 {
-  "name": "Countdown App",
+  "name": "countdown",
   "version": "0.0.2",
   "description": "Death? There's a app for that!",
   "main": "countdown.js",
