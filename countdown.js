@@ -21,7 +21,7 @@ client.on("message", async message => {
   
   if(message.author.bot) return;
   if(message.content != `${prefix}countdown` || message.content != `${prefix}time`  || message.content != `${prefix}timeleft` || message.content != `${prefix}tl` || message.content != `${prefix}cd` && message.channel.id === "678038687430213652") {
-	if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return console.log("Insufficient permisions.")
+	if(!guildMember.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) return console.log("Insufficient permisions.")
         message.delete();
   }
   if(message.content.indexOf(prefix) !== 0) return;
