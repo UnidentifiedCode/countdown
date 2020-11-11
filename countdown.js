@@ -111,12 +111,11 @@ client.on("message", async message => {
         .addField(`**${prefix}countdown**`, `**Description:** Death? There's an app for that.\n**Alias:** ${prefix}time, ${prefix}timeleft, ${prefix}tl, ${prefix}cd`)
         .addField(`**${prefix}botinfo**`, `**Description:** Show bot informations.\n**Alias:** ${prefix}info`)
         .addField(`**${prefix}ping**`, `**Description:** Show bot ping.\n**Alias:** None`)
+    	.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
+	.addField(`**${prefix}purge**`, `**Description:** Delete some messages from channels.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
+	 
 	.setTimestamp()
 	.setFooter(`Bot prefix is ${prefix}`, client.user.avatarURL);
-	if(message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) {
-		botHelp.addField(`**${prefix}say**`, `**Description:** Say something through the bot.\n**Usage:** ${prefix}say #channel \n**Alias:** ${prefix}ann`)
-		botHelp.addField(`**${prefix}purge**`, `**Description:** Delete some messages from channels.\n**Usage:** ${prefix}purge number_of_messages \n**Alias:** ${prefix}clear`)
-	}
     message.channel.send(botHelp);
   }
   if(command === "ping") {
@@ -143,7 +142,6 @@ client.on("message", async message => {
     }
   }
   if(command === "purge" || command === "clear") {
-    if(!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("Insufficient permisions.")
     const deleteCount = parseInt(args[0], 10);
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
       return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
